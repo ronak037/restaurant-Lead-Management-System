@@ -1,0 +1,768 @@
+{
+    "swagger": "2.0",
+    "basePath": "/",
+    "paths": {
+      "/interactions/": {
+        "post": {
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          },
+          "operationId": "Add new interaction",
+          "parameters": [
+            {
+              "name": "payload",
+              "required": true,
+              "in": "body",
+              "schema": {
+                "$ref": "#/definitions/interaction"
+              }
+            },
+            {
+              "description": "Bearer token for authentication",
+              "in": "header",
+              "type": "string",
+              "name": "x-access-tokens"
+            }
+          ],
+          "tags": [
+            "interaction"
+          ]
+        }
+      },
+      "/interactions/{interaction_id}": {
+        "parameters": [
+          {
+            "in": "path",
+            "description": "Interaction identifier",
+            "name": "interaction_id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "get": {
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          },
+          "operationId": "get an interaction",
+          "parameters": [
+            {
+              "description": "Bearer token for authentication",
+              "in": "header",
+              "type": "string",
+              "name": "x-access-tokens"
+            }
+          ],
+          "tags": [
+            "interaction"
+          ]
+        }
+      },
+      "/leads/": {
+        "post": {
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          },
+          "operationId": "Add new lead",
+          "parameters": [
+            {
+              "name": "payload",
+              "required": true,
+              "in": "body",
+              "schema": {
+                "$ref": "#/definitions/lead"
+              }
+            },
+            {
+              "description": "Bearer token for authentication",
+              "in": "header",
+              "type": "string",
+              "name": "x-access-tokens"
+            }
+          ],
+          "tags": [
+            "lead"
+          ]
+        }
+      },
+      "/leads/pending_interactions": {
+        "get": {
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          },
+          "operationId": "get leads to call today",
+          "parameters": [
+            {
+              "description": "Bearer token for authentication",
+              "in": "header",
+              "type": "string",
+              "name": "x-access-tokens"
+            }
+          ],
+          "tags": [
+            "lead"
+          ]
+        }
+      },
+      "/leads/{lead_id}": {
+        "parameters": [
+          {
+            "in": "path",
+            "description": "Lead identifier",
+            "name": "lead_id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "get": {
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          },
+          "operationId": "get a lead",
+          "parameters": [
+            {
+              "description": "Bearer token for authentication",
+              "in": "header",
+              "type": "string",
+              "name": "x-access-tokens"
+            }
+          ],
+          "tags": [
+            "lead"
+          ]
+        }
+      },
+      "/leads/{lead_id}/interaction_freq": {
+        "parameters": [
+          {
+            "in": "path",
+            "description": "lead identifier to do operations on Interaction frequency",
+            "name": "lead_id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "patch": {
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          },
+          "operationId": "update interaction frequency",
+          "parameters": [
+            {
+              "name": "payload",
+              "required": true,
+              "in": "body",
+              "schema": {
+                "$ref": "#/definitions/lead_patch"
+              }
+            },
+            {
+              "description": "Bearer token for authentication",
+              "in": "header",
+              "type": "string",
+              "name": "x-access-tokens"
+            }
+          ],
+          "tags": [
+            "lead"
+          ]
+        }
+      },
+      "/leads/{lead_id}/status": {
+        "parameters": [
+          {
+            "in": "path",
+            "description": "Lead identifier to get status",
+            "name": "lead_id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "get": {
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          },
+          "operationId": "get lead status",
+          "parameters": [
+            {
+              "description": "Bearer token for authentication",
+              "in": "header",
+              "type": "string",
+              "name": "x-access-tokens"
+            }
+          ],
+          "tags": [
+            "lead"
+          ]
+        }
+      },
+      "/manager_accounts/": {
+        "post": {
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          },
+          "operationId": "Add new manager account",
+          "parameters": [
+            {
+              "name": "payload",
+              "required": true,
+              "in": "body",
+              "schema": {
+                "$ref": "#/definitions/manager_account"
+              }
+            }
+          ],
+          "tags": [
+            "manager_account"
+          ]
+        }
+      },
+      "/manager_accounts/account_performance": {
+        "get": {
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          },
+          "operationId": "get account performance",
+          "parameters": [
+            {
+              "name": "x-access-tokens",
+              "in": "header",
+              "type": "string"
+            }
+          ],
+          "tags": [
+            "manager_account"
+          ]
+        }
+      },
+      "/manager_accounts/login": {
+        "post": {
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          },
+          "operationId": "Login with manager account",
+          "parameters": [
+            {
+              "name": "username",
+              "in": "header",
+              "type": "string"
+            },
+            {
+              "name": "password",
+              "in": "header",
+              "type": "string"
+            }
+          ],
+          "tags": [
+            "manager_account"
+          ]
+        }
+      },
+      "/manager_accounts/{manager_account_username}": {
+        "parameters": [
+          {
+            "in": "path",
+            "description": "Manager account identifier",
+            "name": "manager_account_username",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "get": {
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          },
+          "operationId": "get a manager account",
+          "tags": [
+            "manager_account"
+          ]
+        }
+      },
+      "/orders/": {
+        "post": {
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          },
+          "operationId": "Add new order",
+          "parameters": [
+            {
+              "name": "payload",
+              "required": true,
+              "in": "body",
+              "schema": {
+                "$ref": "#/definitions/order"
+              }
+            },
+            {
+              "description": "Bearer token for authentication",
+              "in": "header",
+              "type": "string",
+              "name": "x-access-tokens"
+            }
+          ],
+          "tags": [
+            "order"
+          ]
+        },
+        "get": {
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          },
+          "operationId": "get all orders",
+          "parameters": [
+            {
+              "name": "order_id",
+              "in": "query",
+              "type": "array",
+              "items": {
+                "type": "integer"
+              },
+              "collectionFormat": "csv"
+            },
+            {
+              "name": "lead_id",
+              "in": "query",
+              "type": "array",
+              "items": {
+                "type": "integer"
+              },
+              "collectionFormat": "csv"
+            },
+            {
+              "name": "restaurant_id",
+              "in": "query",
+              "type": "array",
+              "items": {
+                "type": "integer"
+              },
+              "collectionFormat": "csv"
+            },
+            {
+              "name": "amount",
+              "in": "query",
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "collectionFormat": "csv"
+            },
+            {
+              "name": "status",
+              "in": "query",
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "collectionFormat": "csv"
+            },
+            {
+              "name": "from_date",
+              "in": "query",
+              "type": "string"
+            },
+            {
+              "name": "to_date",
+              "in": "query",
+              "type": "string"
+            },
+            {
+              "description": "Bearer token for authentication",
+              "in": "header",
+              "type": "string",
+              "name": "x-access-tokens"
+            }
+          ],
+          "tags": [
+            "order"
+          ]
+        }
+      },
+      "/orders/{order_id}": {
+        "parameters": [
+          {
+            "in": "path",
+            "description": "The order identifier",
+            "name": "order_id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "get": {
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          },
+          "operationId": "get an order",
+          "parameters": [
+            {
+              "description": "Bearer token for authentication",
+              "in": "header",
+              "type": "string",
+              "name": "x-access-tokens"
+            }
+          ],
+          "tags": [
+            "order"
+          ]
+        }
+      },
+      "/restaurant_contacts/": {
+        "post": {
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          },
+          "operationId": "Add new restaurant contact",
+          "parameters": [
+            {
+              "name": "payload",
+              "required": true,
+              "in": "body",
+              "schema": {
+                "$ref": "#/definitions/restaurant_contact"
+              }
+            },
+            {
+              "description": "Bearer token for authentication",
+              "in": "header",
+              "type": "string",
+              "name": "x-access-tokens"
+            }
+          ],
+          "tags": [
+            "restaurant_contact"
+          ]
+        }
+      },
+      "/restaurant_contacts/{restaurant_contact_id}": {
+        "parameters": [
+          {
+            "in": "path",
+            "description": "Restaurant contact identifier",
+            "name": "restaurant_contact_id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "get": {
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          },
+          "operationId": "get a restaurant contact",
+          "parameters": [
+            {
+              "description": "Bearer token for authentication",
+              "in": "header",
+              "type": "string",
+              "name": "x-access-tokens"
+            }
+          ],
+          "tags": [
+            "restaurant_contact"
+          ]
+        }
+      },
+      "/restaurants/": {
+        "post": {
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          },
+          "operationId": "Add new restaurant",
+          "parameters": [
+            {
+              "name": "payload",
+              "required": true,
+              "in": "body",
+              "schema": {
+                "$ref": "#/definitions/restaurant"
+              }
+            },
+            {
+              "description": "Bearer token for authentication",
+              "in": "header",
+              "type": "string",
+              "name": "x-access-tokens"
+            }
+          ],
+          "tags": [
+            "restaurant"
+          ]
+        }
+      },
+      "/restaurants/{restaurant_id}": {
+        "parameters": [
+          {
+            "in": "path",
+            "description": "Restaurant identifier",
+            "name": "restaurant_id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "get": {
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          },
+          "operationId": "get a restaurant",
+          "parameters": [
+            {
+              "description": "Bearer token for authentication",
+              "in": "header",
+              "type": "string",
+              "name": "x-access-tokens"
+            }
+          ],
+          "tags": [
+            "restaurant"
+          ]
+        }
+      }
+    },
+    "info": {
+      "title": "API",
+      "version": "1.0"
+    },
+    "produces": [
+      "application/json"
+    ],
+    "consumes": [
+      "application/json"
+    ],
+    "tags": [
+      {
+        "name": "restaurant",
+        "description": "Restaurant related operations"
+      },
+      {
+        "name": "restaurant_contact",
+        "description": "Restaurant contact related operations"
+      },
+      {
+        "name": "lead",
+        "description": "Lead related operations"
+      },
+      {
+        "name": "manager_account",
+        "description": "Manager account related operations"
+      },
+      {
+        "name": "order",
+        "description": "Order related operations"
+      },
+      {
+        "name": "interaction",
+        "description": "Interaction related operations"
+      }
+    ],
+    "definitions": {
+      "restaurant": {
+        "required": [
+          "location",
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "restaurant name"
+          },
+          "location": {
+            "type": "string",
+            "description": "restaurant location"
+          }
+        },
+        "type": "object"
+      },
+      "restaurant_contact": {
+        "required": [
+          "name",
+          "phone_number",
+          "restaurant_id",
+          "role"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "restaurant contact name"
+          },
+          "role": {
+            "type": "string",
+            "description": "restaurant contact role"
+          },
+          "phone_number": {
+            "type": "string",
+            "description": "restaurant contact phone number"
+          },
+          "restaurant_id": {
+            "type": "integer",
+            "description": "restaurant id"
+          }
+        },
+        "type": "object"
+      },
+      "lead": {
+        "required": [
+          "account_username",
+          "restaurant_id",
+          "source"
+        ],
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "lead status",
+            "default": "new"
+          },
+          "interaction_frequency": {
+            "type": "integer",
+            "description": "lead interaction frequency"
+          },
+          "source": {
+            "type": "string",
+            "description": "lead source"
+          },
+          "restaurant_id": {
+            "type": "integer",
+            "description": "restaurant id"
+          },
+          "account_username": {
+            "type": "string",
+            "description": "account username"
+          }
+        },
+        "type": "object"
+      },
+      "lead_patch": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "lead status"
+          },
+          "interaction_frequency": {
+            "type": "integer",
+            "description": "lead interaction frequency"
+          }
+        },
+        "type": "object"
+      },
+      "manager_account": {
+        "required": [
+          "password",
+          "username"
+        ],
+        "properties": {
+          "username": {
+            "type": "string",
+            "description": "username"
+          },
+          "password": {
+            "type": "string",
+            "description": "password"
+          },
+          "role": {
+            "type": "string",
+            "description": "role",
+            "default": "employee"
+          },
+          "status": {
+            "type": "string",
+            "description": "status",
+            "default": "active"
+          }
+        },
+        "type": "object"
+      },
+      "order": {
+        "required": [
+          "amount",
+          "lead_id",
+          "restaurant_id"
+        ],
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "order status",
+            "default": "pending"
+          },
+          "amount": {
+            "type": "number",
+            "description": "order amount"
+          },
+          "lead_id": {
+            "type": "integer",
+            "description": "lead id"
+          },
+          "restaurant_id": {
+            "type": "integer",
+            "description": "restaurant id"
+          }
+        },
+        "type": "object"
+      },
+      "interaction": {
+        "required": [
+          "account_username",
+          "lead_id"
+        ],
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "interaction status",
+            "default": "in_progress"
+          },
+          "lead_id": {
+            "type": "integer",
+            "description": "lead id"
+          },
+          "account_username": {
+            "type": "string",
+            "description": "account username"
+          },
+          "notes": {
+            "type": "string",
+            "description": "call notes"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "responses": {
+      "ParseError": {
+        "description": "When a mask can't be parsed"
+      },
+      "MaskError": {
+        "description": "When any error occurs on mask"
+      }
+    }
+  }
