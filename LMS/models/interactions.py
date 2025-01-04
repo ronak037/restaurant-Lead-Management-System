@@ -13,6 +13,7 @@ class Interactions(db.Model):
     account_username = db.Column(db.String(), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.now)
     notes = db.Column(db.String())
+    restaurant_contact_id = db.Column(db.Integer, nullable=False)
 
     __table_args__ = (
         CheckConstraint(status.in_(['in_progress', 'completed', 'missed', 'rescheduled']), name='interaction_status_enum'),      
@@ -22,5 +23,3 @@ class Interactions(db.Model):
 
     def __repr__(self):
         return f"Interaction id: {self.id}"
-
-    

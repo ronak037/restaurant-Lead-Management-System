@@ -11,10 +11,11 @@ class InteractionRepository:
             status = interaction_dto.status,
             lead_id = interaction_dto.lead_id,
             account_username = interaction_dto.account_username,
-            notes = interaction_dto.notes
+            notes = interaction_dto.notes,
+            restaurant_contact_id = interaction_dto.restaurant_contact_id
         )
         self.save_db(interaction)
-    
+
     def get_interaction(self, id):
         db_interaction = Interactions.query.filter_by(id=id).first()
         if db_interaction is None:

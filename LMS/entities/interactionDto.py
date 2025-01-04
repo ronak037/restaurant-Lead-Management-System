@@ -13,27 +13,30 @@ class InteractionApi:
         'status': fields.String(required=False, description="interaction status", default="in_progress"),
         'lead_id': fields.Integer(required=True, description="lead id"),
         'account_username': fields.String(required=True, description="account username"),
-        'notes': fields.String(required=False, description="call notes")
+        'notes': fields.String(required=False, description="call notes"),
+        'restaurant_contact_id': fields.String(required=True, description="Contact id to which call is made")
     })
 
 class InteractionDto:
-    def __init__(self, status, lead_id, account_username, notes):
+    def __init__(self, status, lead_id, account_username, notes, restaurant_contact_id):
         self.status = status
         self.lead_id = lead_id
         self.account_username = account_username
         self.notes = notes
+        self.restaurant_contact_id = restaurant_contact_id
 
 class InteractionAdapter:
     def convert_dict_to_Dto(self, data: dict):
-        return InteractionDto(data['status'], data['lead_id'], data['account_username'], data['notes'])
+        return InteractionDto(data['status'], data['lead_id'], data['account_username'], data['notes'], data['restaurant_contact_id'])
 
     def convert_to_dict(self, data: InteractionDto):
         return {
             'status': data.status,
             'lead_id': data.lead_id,
             'account_username': data.account_username,
-            'notes': data.notes
+            'notes': data.notes,
+            'restaurant_contact_id': data.restaurant_contact_id
         }
 
     def convert_db_object_to_Dto(self, db_object):
-        return InteractionDto(db_object.status, db_object.lead_id, db_object.account_username, db_object.notes)
+        return InteractionDto(db_object.status, db_object.lead_id, db_object.account_username, db_object.notes, db_object.restaurant_contact_id)

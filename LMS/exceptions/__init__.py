@@ -1,6 +1,7 @@
 from .restaurantExistsException import RestaurantExistsException
 from .restaurantNotExistsException import RestaurantNotExistsException
 from .restaurantContactExistsException import RestaurantContactExistsException
+from .restaurantContactNotExistsException import RestaurantContactNotExistsException
 from .leadNotExistsException import LeadNotExistsException
 from .leadExistsException import LeadExistsException
 from .managerAccountExistsException import ManagerAccountExistsException
